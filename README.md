@@ -22,7 +22,7 @@ Configure Claude (macOS) to use Jamf Concepts mcp hub with credentials stored in
 	`deactivate`
 	
 10. create the tokens for Jamf Pro (Settings --> System --> API roles and clients), Jamf Protect (Settings --> API Clients) and Jamf Security Cloud (Integrations --> Risk API)
-You can use "api-role.json" with the Jamf Pro API to create a Jamf Pro role with the required roles. Use the gui to create the client and generate the credentials
+You can use "api-role.json" with the Jamf Pro API to create a Jamf Pro role with the required roles. Use the gui to create the client and generate the credentials.
 Make sure you save the client ids and secrets for the next step. If you don't have/use Jamf Protect or Jamf Security Cloud, you can skip those
 
 11. create the Keychain entries for the 3 products. SKip any that you aren't using
