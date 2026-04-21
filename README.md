@@ -22,7 +22,7 @@ Configure Claude (macOS) to use Jamf Concepts mcp hub with credentials stored in
 	`deactivate`
 	
 10. create the tokens for Jamf Pro (Settings --> System --> API roles and clients), Jamf Protect (Settings --> API Clients) and Jamf Security Cloud (Integrations --> Risk API)
-You can use "api-role.json" with the Jamf Pro API to create a Jamf Pro role with the required roles. Use the gui to create the client and generate the credentials.
+You can use `api-role.json` with the Jamf Pro API (`/v1/api-roles` endpoint) to create a Jamf Pro role with the required roles. Fell free to change `displayName` in the json. Use the gui to create the client and generate the credentials.
 Make sure you save the client ids and secrets for the next step. If you don't have/use Jamf Protect or Jamf Security Cloud, you can skip those
 
 11. create the Keychain entries for the 3 products. SKip any that you aren't using
@@ -43,15 +43,13 @@ Make sure you save the client ids and secrets for the next step. If you don't ha
 	
 12. create `~/Library/Application Support/Claude/scripts` and copy in `jamf.sh`
 
-13. change the following items in `jamf.sh` (the lines starting with export). Skip any that you're not using
+13. change the following items in `jamf.sh`. Skip any that you're not using
 ```
-JAMF_PRO_URL
-JAMF_PRO_CLIENT_ID
-JAMF_PROTECT_URL
-JAMF_PROTECT_CLIENT_ID
-JAMF_SECURITY_APP_ID
+JAMF_PRO_URL - replace <your instance> with your Jamf Cloud instance name or replace the entire URL with your custom/vanity URL
+JAMF_PRO_CLIENT_ID - replace <your client id> with your Jamf Pro API client id
+JAMF_PROTECT_URL - replace <your instance> with your Jamf Protect instance name. Do NOT add graphql
+JAMF_PROTECT_CLIENT_ID - replace <your client id> with your Jamf Protect API client id
+JAMF_SECURITY_APP_ID - replace <your client id> with your Jamf Security Cloud Risk API client id
 ```
-
-Note - the JAMF_PROTECT_URL must NOT end in graphql
 
 10. in `jamf.sh` change `<path to repo>` to the dir where you cloned the repo in step 2. Run `pwd` in Terminal to get the full path to `mcp-hub`
