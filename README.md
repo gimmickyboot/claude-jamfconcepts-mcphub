@@ -26,6 +26,7 @@ You can use "api-role.json" with the Jamf Pro API to create a Jamf Pro role with
 Make sure you save the client ids and secrets for the next step. If you don't have/use Jamf Protect or Jamf Security Cloud, you can skip those
 
 11. create the Keychain entries for the 3 products. SKip any that you aren't using
+	
 	i. open Keychain
 	
 	ii. File (menu) --> New Password Item...
