@@ -7,25 +7,25 @@ Configure Claude (macOS) to use Jamf Concepts mcp hub with credentials stored in
 
     `cd mcp-hub`
 	
-4. setup a virtual env (venv) and activate it
+3. setup a virtual env (venv) and activate it
 
 	`python3 -m venv .venv`
 
 	`source .venv/bin/activate`
 	
-6. install the python requirements
+4. install the python requirements
 
 	`pip install -e .`
 	
-8. deactivate the venv
+5. deactivate the venv
 
 	`deactivate`
 	
-10. create the tokens for Jamf Pro (Settings --> System --> API roles and clients), Jamf Protect (Settings --> API Clients) and Jamf Security Cloud (Integrations --> Risk API)
+6. create the tokens for Jamf Pro (Settings --> System --> API roles and clients), Jamf Protect (Settings --> API Clients) and Jamf Security Cloud (Integrations --> Risk API)
 You can use `api-role.json` with the Jamf Pro API (`/v1/api-roles` endpoint) to create a Jamf Pro role with the required roles. Fell free to change `displayName` in the json. Use the gui to create the client and generate the credentials.
 Make sure you save the client ids and secrets for the next step. If you don't have/use Jamf Protect or Jamf Security Cloud, you can skip those
 
-11. create the Keychain entries for the 3 products. SKip any that you aren't using
+7. create the Keychain entries for the 3 products. SKip any that you aren't using
 	
 	i. open Keychain
 	
@@ -41,9 +41,9 @@ Make sure you save the client ids and secrets for the next step. If you don't ha
 	
 	vii. repeat with the other 2 tokens. Use protect_token and seccloud_token for "Keychain Item Name"
 	
-12. create `~/Library/Application Support/Claude/scripts` and copy in `jamf.sh`
+8. create `~/Library/Application Support/Claude/scripts` and copy in `jamf.sh`
 
-13. change the following items in `jamf.sh`. Skip any that you're not using
+9. change the following items in `jamf.sh`. Skip any that you're not using
 ```
 JAMF_PRO_URL - replace <your instance> with your Jamf Cloud instance name or replace the entire URL with your custom/vanity URL
 JAMF_PRO_CLIENT_ID - replace <your client id> with your Jamf Pro API client id
@@ -53,6 +53,18 @@ JAMF_SECURITY_APP_ID - replace <your client id> with your Jamf Security Cloud Ri
 ```
 
 10. in `jamf.sh` change `<path to repo>` to the dir where you cloned the repo in step 2. Run `pwd` in Terminal to get the full path to `mcp-hub`
+
+11. add the following json to ~/Library/Application Support/Claude/claude_desktop_config.json. Replace <Mac username> with your username from step 7 iv above
+```
+"mcpServers": {
+	"jamf": {
+		"command": "sh",
+		"args": [
+			"/Users/<Mac username>/Library/Application Support/Claude/scripts/jamf.sh"
+		]
+	}
+}
+```
 
 12. quit/open Claude
 
