@@ -53,3 +53,9 @@ JAMF_SECURITY_APP_ID - replace <your client id> with your Jamf Security Cloud Ri
 ```
 
 10. in `jamf.sh` change `<path to repo>` to the dir where you cloned the repo in step 2. Run `pwd` in Terminal to get the full path to `mcp-hub`
+
+12. quit/open Claude
+
+13. when prompted, enter your Mac password. You can choose to "Always Allow" to stop the prompts each time Claude is opened
+    
+14. Ask Calude something about your Jmaf products, eg "Please give me a status update on my policies in Jamf Pro" or "Are there any alerts in Jamf Protect that need my attention"
