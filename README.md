@@ -33,7 +33,7 @@ Make sure you save the client ids and secrets for the next step. If you don't ha
 	
 	iii. enter jamf_token for "Keychain Item Name"
 	
-	iv. enter you Mac's username in "Account Name". Run `echo $USER` in Terminal if you're unsure
+	iv. enter your API client ID in "Account Name"
 	
 	v. paste the secret (from step 6)
 	
@@ -43,18 +43,14 @@ Make sure you save the client ids and secrets for the next step. If you don't ha
 	
 8. create `~/Library/Application Support/Claude/scripts` and copy in `jamf.sh`
 
-9. change the following items in `jamf.sh`. Skip any that you're not using
+9. edit the three variables as indicated
 ```
-JAMF_PRO_URL - replace <your instance> with your Jamf Cloud instance name or replace the entire URL with your custom/vanity URL
-JAMF_PRO_CLIENT_ID - replace <your client id> with your Jamf Pro API client id
-JAMF_PROTECT_URL - replace <your instance> with your Jamf Protect instance name. Do NOT add graphql
-JAMF_PROTECT_CLIENT_ID - replace <your client id> with your Jamf Protect API client id
-JAMF_SECURITY_APP_ID - replace <your client id> with your Jamf Security Cloud Risk API client id
+JAMF_PRO_URL="<full Jamf Pro URL>" - eg https://myjamf.jamfcloud.com
+JAMF_PROTECT_INSTANCE_NAME="<protect instance name" - eg myjamf
+GITHUB_PATH="<path to cloned mcp-hub repo" - eg /Users/myusername/mcp-hub. Run pwd in Terminal where you cloned the mcp-hub repo in step 2
 ```
 
-10. in `jamf.sh` change `<path to repo>` to the dir where you cloned the repo in step 2. Run `pwd` in Terminal to get the full path to `mcp-hub`
-
-11. add the following json to ~/Library/Application Support/Claude/claude_desktop_config.json. Replace <Mac username> with your username from step 7 iv above
+10. add the following json to ~/Library/Application Support/Claude/claude_desktop_config.json. Replace `<Mac username>` with your local Mac username. Run `echo $USER` in Terminal if you're unsure
 ```
 "mcpServers": {
 	"jamf": {
@@ -66,8 +62,8 @@ JAMF_SECURITY_APP_ID - replace <your client id> with your Jamf Security Cloud Ri
 }
 ```
 
-12. quit/open Claude
+11. quit/open Claude
 
-13. when prompted, enter your Mac password. You can choose to "Always Allow" to stop the prompts each time Claude is opened
+12. when prompted, enter your Mac password. You can choose to "Always Allow" to stop the prompts each time Claude is opened
     
-14. Ask Calude something about your Jmaf products, eg "Please give me a status update on my policies in Jamf Pro" or "Are there any alerts in Jamf Protect that need my attention"
+13. Ask Calude something about your Jamf products, eg "Please give me a status update on my policies in Jamf Pro" or "Are there any alerts in Jamf Protect that need my attention"
